@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Diwali Doston! 🪔</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Yatra+One&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#1a0b2e; --night2:#2d1150; --gold:#ffc83d; --saffron:#ff8c1a;
+    --pink:#ff3d7f; --cream:#fff4dc; --green:#38d39f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Baloo 2',system-ui,sans-serif; color:var(--cream);
+    background:radial-gradient(ellipse at top,var(--night2),var(--night) 60%) fixed;
+    min-height:100vh; overflow-x:hidden;
+  }
+  #fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  h1,h2,.display{font-family:'Yatra One','Baloo 2',cursive;font-weight:400}
+
+  /* toran */
+  .toran{display:flex;justify-content:space-around;height:46px;overflow:hidden}
+  .toran span{width:26px;height:40px;background:var(--saffron);border-radius:0 0 50% 50%;
+    box-shadow:inset 0 -8px 0 var(--gold);animation:sway 3s ease-in-out infinite;transform-origin:top}
+  .toran span:nth-child(odd){background:#3fae4f;box-shadow:inset 0 -8px 0 #2b7d38;animation-delay:-1.5s}
+  @keyframes sway{50%{transform:rotate(6deg)}}
+
+  header{text-align:center;padding:40px 0 30px}
+  .tag{display:inline-block;background:var(--pink);color:#fff;padding:4px 14px;border-radius:99px;
+    font-weight:700;font-size:.9rem;transform:rotate(-3deg)}
+  h1{font-size:clamp(2.6rem,9vw,5.2rem);line-height:1.05;margin:16px 0 10px;
+    background:linear-gradient(90deg,var(--gold),var(--saffron),var(--pink),var(--gold));
+    background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shine 6s linear infinite}
+  @keyframes shine{to{background-position:300%}}
+  .sub{font-size:1.25rem;opacity:.9;max-width:600px;margin:0 auto}
+  .hint{margin-top:18px;font-size:.95rem;color:var(--gold);animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.4}}
+
+  /* diyas */
+  .diyas{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:34px 0 8px}
+  .diya{width:70px;height:80px;position:relative;cursor:pointer;border:none;background:none}
+  .diya .bowl{position:absolute;bottom:0;left:5px;width:60px;height:30px;
+    background:linear-gradient(#c8551d,#8a2f0c);border-radius:0 0 40px 40px}
+  .diya .bowl::before{content:"";position:absolute;top:-6px;left:0;right:0;height:12px;
+    background:#e06a2c;border-radius:50%}
+  .diya .flame{position:absolute;bottom:28px;left:28px;width:14px;height:26px;
+    background:radial-gradient(ellipse at bottom,#fff 10%,var(--gold) 40%,var(--saffron) 70%,transparent 72%);
+    border-radius:50% 50% 50% 50%/60% 60% 40% 40%;opacity:0;transform:scale(.2);transition:.3s;
+    transform-origin:bottom}
+  .diya.lit .flame{opacity:1;transform:scale(1);animation:flick .15s infinite alternate}
+  .diya.lit{filter:drop-shadow(0 0 18px rgba(255,200,61,.8))}
+  @keyframes flick{to{transform:scale(1.05,.93) skewX(3deg)}}
+  .diya-msg{text-align:center;min-height:2em;font-size:1.1rem;color:var(--gold);font-weight:700}
+
+  section{padding:46px 0}
+  h2{font-size:clamp(1.9rem,5vw,2.8rem);text-align:center;color:var(--gold);margin-bottom:6px}
+  .lead{text-align:center;opacity:.85;margin-bottom:26px;font-size:1.1rem}
+
+  .card{background:rgba(255,255,255,.06);border:2px solid rgba(255,200,61,.25);
+    border-radius:22px;padding:26px;backdrop-filter:blur(4px)}
+  input[type=text]{font:inherit;font-size:1.1rem;padding:12px 16px;border-radius:14px;border:2px solid var(--gold);
+    background:rgba(0,0,0,.25);color:var(--cream);width:100%;max-width:340px;outline:none}
+  input::placeholder{color:rgba(255,244,220,.5)}
+  .btn{font:inherit;font-weight:800;font-size:1.05rem;padding:12px 22px;border-radius:14px;border:none;cursor:pointer;
+    background:linear-gradient(135deg,var(--gold),var(--saffron));color:#3a1500;
+    box-shadow:0 5px 0 #a8500a;transition:transform .1s, box-shadow .1s}
+  .btn:active{transform:translateY(4px);box-shadow:0 1px 0 #a8500a}
+  .btn.pink{background:linear-gradient(135deg,#ff7aa8,var(--pink));color:#fff;box-shadow:0 5px 0 #a3164a}
+  .btn.ghost{background:transparent;color:var(--gold);border:2px solid var(--gold);box-shadow:none}
+  .row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;align-items:center}
+
+  /* bhavishyavani */
+  .scroll{margin-top:22px;background:var(--cream);color:#4a1d00;border-radius:16px;padding:24px;
+    font-size:1.2rem;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:8px;box-shadow:0 0 0 6px var(--saffron),0 0 0 10px var(--gold)}
+  .scroll .who{font-family:'Yatra One',cursive;font-size:1.5rem;color:#c2410c}
+  .scroll.pop{animation:pop .4s}
+  @keyframes pop{0%{transform:scale(.85) rotate(-2deg)}70%{transform:scale(1.04)}100%{transform:none}}
+
+  /* game */
+  .game{position:relative;height:340px;border-radius:22px;overflow:hidden;
+    background:repeating-linear-gradient(90deg,#f3dcb0 0 60px,#ead0a0 60px 120px);border:4px solid var(--saffron);
+    cursor:crosshair;user-select:none}
+  .game .floor{position:absolute;bottom:0;left:0;right:0;height:70px;background:#b9814a}
+  .junk{position:absolute;font-size:2.2rem;cursor:pointer;transition:transform .1s;line-height:1}
+  .junk:hover{transform:scale(1.2)}
+  .junk.gone{animation:poof .3s forwards;pointer-events:none}
+  @keyframes poof{to{transform:scale(2) rotate(40deg);opacity:0}}
+  .hud{display:flex;justify-content:space-between;color:#4a1d00;font-weight:800;font-size:1.15rem;
+    position:absolute;top:10px;left:14px;right:14px;z-index:2}
+  .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:rgba(26,11,46,.86);text-align:center;padding:20px;gap:12px;z-index:3}
+  .overlay .big{font-family:'Yatra One',cursive;font-size:2rem;color:var(--gold)}
+  .mummy{position:absolute;right:-90px;bottom:60px;font-size:4rem;transition:right .6s;z-index:2}
+  .mummy.show{right:20px}
+
+  /* friend types */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .ftype{perspective:900px;height:200px;cursor:pointer}
+  .ftype .inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+  .ftype.flip .inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;border-radius:20px;padding:18px;backface-visibility:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .front{background:linear-gradient(160deg,#3b1670,#5a1f8a);border:2px solid rgba(255,200,61,.35)}
+  .front .emo{font-size:3rem}
+  .front b{font-size:1.15rem;margin-top:6px;color:var(--gold)}
+  .front small{opacity:.6;margin-top:4px}
+  .back{background:var(--cream);color:#4a1d00;transform:rotateY(180deg);font-size:1rem;line-height:1.35}
+
+  /* rocket meter */
+  .meter{height:30px;border-radius:99px;background:rgba(0,0,0,.35);overflow:hidden;border:2px solid var(--gold);margin:18px 0 10px}
+  .meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--gold),var(--pink));
+    transition:width 1.2s cubic-bezier(.2,1.4,.4,1)}
+  .verdict{text-align:center;font-size:1.2rem;font-weight:700;min-height:1.6em}
+
+  /* wish */
+  .wish{margin-top:20px;background:linear-gradient(135deg,#ff8c1a22,#ff3d7f22);border:2px dashed var(--gold);
+    border-radius:16px;padding:22px;font-size:1.15rem;white-space:pre-line;text-align:center;min-height:100px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--green);
+    color:#04281c;font-weight:800;padding:12px 22px;border-radius:99px;transition:.3s;z-index:60}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  footer{text-align:center;padding:40px 0 60px;opacity:.75}
+  .bomb-btn{position:fixed;right:18px;bottom:18px;z-index:40;width:64px;height:64px;border-radius:50%;
+    font-size:1.9rem;border:none;cursor:pointer;background:var(--pink);box-shadow:0 6px 20px rgba(255,61,127,.6);
+    animation:wobble 2.5s infinite}
+  @keyframes wobble{0%,100%{transform:rotate(0)}10%{transform:rotate(-12deg)}20%{transform:rotate(12deg)}30%{transform:rotate(0)}}
+  .shake{animation:shake .4s}
+  @keyframes shake{20%{transform:translate(-6px,3px)}40%{transform:translate(6px,-3px)}60%{transform:translate(-4px,2px)}80%{transform:translate(4px,0)}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div class="toran" id="toran"></div>
+
+<div class="wrap" id="page">
+  <header>
+    <span class="tag">⚠️ Warning: is website mein calories zero hain, mithai nahi 😜</span>
+    <h1>Happy Diwali,<br>Doston! 🪔</h1>
+    <p class="sub">Saal bhar ki saari bakchodi ek taraf, aur Diwali pe mummy ki safai list ek taraf. Aao, thoda masti kar lein!</p>
+    <p class="hint">👆 Kahin bhi click/tap karo — free mein patake! (Pollution zero, mohalle wale khush)</p>
+
+    <div class="diyas" id="diyas"></div>
+    <div class="diya-msg" id="diyaMsg">Saare 7 diye jalao… agar himmat hai 🔥</div>
+  </header>
+
+  <!-- Bhavishyavani -->
+  <section id="bhavishya">
+    <h2>🔮 Baba Patakanand ki Bhavishyavani</h2>
+    <p class="lead">Apna (ya dost ka) naam daalo, aur jaano iss Diwali kya hone wala hai</p>
+    <div class="card">
+      <div class="row">
+        <input type="text" id="nameIn" placeholder="Naam likho, jaise Bunty" maxlength="24">
+        <button class="btn" id="predictBtn">Bhavishya Dikhao ✨</button>
+      </div>
+      <div class="scroll" id="scroll"><span>Baba dhyaan mein hain… naam daalo 🧘</span></div>
+    </div>
+  </section>
+
+  <!-- Safai game -->
+  <section id="safai">
+    <h2>🧹 Mummy Aa Rahi Hai!</h2>
+    <p class="lead">20 second mein jitna kachra saaf kar sako karo. Warna chappal ready hai 🩴</p>
+    <div class="game" id="game">
+      <div class="hud"><span>🧹 Saaf: <b id="score">0</b></span><span>⏱️ <b id="time">20</b>s</span></div>
+      <div class="floor"></div>
+      <div class="mummy" id="mummy">👩‍🦱</div>
+      <div class="overlay" id="overlay">
+        <div class="big">Diwali Safai Challenge</div>
+        <p>Jaale 🕸️, dhool 💨, purane bill 🧾 aur chhupe hue chips 🥔 pe tap karo!<br>Par dhyaan se — 💸 ₹500 ka note mat phenk dena!</p>
+        <button class="btn" id="startBtn">Shuru Karo 🧹</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Friend types -->
+  <section id="types">
+    <h2>👯 Diwali pe Har Group mein Ye Log Hote Hi Hain</h2>
+    <p class="lead">Card pe tap karo, aur apne dost ko tag karo (mann hi mann mein 😏)</p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- Rocket meter -->
+  <section id="meter">
+    <h2>🚀 Patakebaazi-o-Meter</h2>
+    <p class="lead">Scientific test se pata karo tum kitne bade patakebaaz ho (100% accurate, 0% science)</p>
+    <div class="card">
+      <div class="row">
+        <input type="text" id="meterIn" placeholder="Apna naam" maxlength="24">
+        <button class="btn pink" id="meterBtn">Naapo! 📏</button>
+      </div>
+      <div class="meter"><i id="bar"></i></div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+  </section>
+
+  <!-- Wish generator -->
+  <section id="wish">
+    <h2>💌 Dost ke liye Funny Wish</h2>
+    <p class="lead">WhatsApp pe "Happy Diwali 🪔🪔🪔" forward karne waalon, ab kuch naya bhejo</p>
+    <div class="card">
+      <div class="row">
+        <input type="text" id="wishIn" placeholder="Dost ka naam" maxlength="24">
+        <button class="btn" id="wishBtn">Wish Banao 🎁</button>
+        <button class="btn ghost" id="copyBtn">Copy 📋</button>
+      </div>
+      <div class="wish" id="wishOut">Yahan aayegi tumhari dhamakedaar wish 💥</div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="display" style="font-size:1.6rem;color:var(--gold)">Shubh Deepavali 🪔✨</p>
+    <p>Diye jalao, mithai khao, aur dost ki mithai bhi chura lo.<br>Safe aur khush raho — pets aur buzurgon ka dhyaan rakhna 🐶👵</p>
+  </footer>
+</div>
+
+<button class="bomb-btn" id="bomb" title="Sutli bomb">💣</button>
+<div class="toast" id="toast">Copy ho gaya! Ab bhej do 🚀</div>
+
+<script>
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const clean = s => (s||'').trim().replace(/[<>]/g,'');
+function hash(str){let h=7;for(const c of str.toLowerCase())h=(h*31+c.charCodeAt(0))>>>0;return h}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+
+/* ---------- toran ---------- */
+$('#toran').innerHTML = '<span></span>'.repeat(Math.ceil(innerWidth/34));
+
+/* ---------- fireworks ---------- */
+const cv=$('#fx'), ctx=cv.getContext('2d'); let W,H, parts=[];
+function size(){W=cv.width=innerWidth*devicePixelRatio;H=cv.height=innerHeight*devicePixelRatio;
+  cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px'}
+size(); addEventListener('resize',size);
+const colors=['#ffc83d','#ff8c1a','#ff3d7f','#38d39f','#7cc4ff','#ffffff','#c084fc'];
+function burst(x,y,n=70,big=false){
+  const col=pick(colors), col2=pick(colors);
+  for(let i=0;i<n;i++){
+    const a=Math.random()*Math.PI*2, sp=(Math.random()*4+1.5)*(big?1.8:1)*devicePixelRatio;
+    parts.push({x:x*devicePixelRatio,y:y*devicePixelRatio,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,
+      life:1,decay:Math.random()*.015+.012,c:Math.random()<.5?col:col2,r:(Math.random()*2+1.2)*devicePixelRatio});
+  }
+}
+function loop(){
+  ctx.globalCompositeOperation='destination-out';ctx.fillStyle='rgba(0,0,0,.22)';ctx.fillRect(0,0,W,H);
+  ctx.globalCompositeOperation='lighter';
+  for(let i=parts.length-1;i>=0;i--){const p=parts[i];
+    p.vx*=.98;p.vy=p.vy*.98+.05*devicePixelRatio;p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;
+    if(p.life<=0){parts.splice(i,1);continue}
+    ctx.globalAlpha=p.life;ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);ctx.fill();}
+  ctx.globalAlpha=1;requestAnimationFrame(loop);
+}
+loop();
+document.addEventListener('click',e=>{
+  if(e.target.closest('button,input,.game,.ftype'))return;
+  burst(e.clientX,e.clientY);
+});
+// ambient fireworks every few seconds
+setInterval(()=>{if(document.hidden)return;burst(Math.random()*innerWidth,Math.random()*innerHeight*.45+30,50)},3500);
+
+/* ---------- sutli bomb ---------- */
+const bombLines=['Sutli bomb phata! Padosi ka kutta 3 din tak gayab 🐕💨','BOOOM! Sharma ji ka beta bhi itna loud nahi hai 💥',
+  'Dhamaka itna bada ki WiFi bhi disconnect ho gaya 📶❌','Kaan mein ab sirf "ting-ting" sunai de raha hai 🔔'];
+$('#bomb').onclick=()=>{
+  for(let i=0;i<6;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.7,90,true),i*120);
+  document.body.classList.remove('shake');void document.body.offsetWidth;document.body.classList.add('shake');
+  toast(pick(bombLines));
+};
+
+/* ---------- diyas ---------- */
+const diyaLines=['Ek diya jala, light bill ka darr shuru 💡','Do diye! Mummy proud hai 🥹','Teen… ab Sharma ji jal rahe hain 😏',
+  'Chaar! Ghar mein Lakshmi ji aane ki taiyaari 💰','Paanch! Padosiyon ne LED lagaya, tumne asli diye 😎',
+  'Chhe! Bas ek aur… haath mat jalana 🔥','SAATON JAL GAYE! Ab tum official "Diwali ke Diye-pradhan" ho 🏆'];
+const dWrap=$('#diyas'); let litCount=0;
+for(let i=0;i<7;i++){
+  const d=document.createElement('button');d.className='diya';d.setAttribute('aria-label','Diya jalao');
+  d.innerHTML='<div class="flame"></div><div class="bowl"></div>';
+  d.onclick=e=>{
+    if(d.classList.contains('lit')){d.classList.remove('lit');litCount--;
+      $('#diyaMsg').textContent=pick(['Arre bujha diya?! Hawa ne nahi, tumne kiya 🌬️','Light bill bachane ka shauk? 🤨']);return}
+    d.classList.add('lit');litCount++;$('#diyaMsg').textContent=diyaLines[litCount-1];
+    const r=d.getBoundingClientRect();burst(r.left+r.width/2,r.top+20,25);
+    if(litCount===7)for(let k=0;k<8;k++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.5,80,true),k*150);
+  };
+  dWrap.appendChild(d);
+}
+
+/* ---------- bhavishyavani ---------- */
+const preds=[
+  'Iss Diwali tumhe 7 soan papdi ke dabbe milenge. Aur tum unhe aage 7 logon ko gift kar doge. Circle of life 🔄',
+  'Tumhara ek rocket aasmaan ki jagah seedha Gupta uncle ki balcony mein jayega. Maafi maangne ki practice shuru karo 🙏',
+  'Taash mein tum ₹50 jeetoge aur ₹500 haaroge. Phir bologe "main toh bas time pass kar raha tha" 🃏',
+  'Mummy safai ke time tumhe "bas 5 minute ka kaam" dengi. Wo 5 ghante chalega 🧹',
+  'Rishtedaar poochenge "shaadi kab kar rahe ho?" Tumhara jawab: "Jab aap apni salary batayenge" 😎',
+  'Tum 3 kilo kaju katli khaoge aur 1 Jan ko gym join karne ka jhootha waada karoge 🏋️',
+  'Tumhara anaar phatega nahi, bas "pssss" karke sharmaa jayega. Bilkul tumhari tarah 🌋',
+  'Tum 47 WhatsApp groups mein "Happy Diwali" bhejoge, aur 46 mein koi reply nahi aayega 📱',
+  'Lakshmi ji aayengi, tumhara wallet dekhengi, aur chupchaap Sharma ji ke ghar chali jayengi 💸',
+  'Tum rangoli banaoge, aur ghar ki billi usme yoga karegi 🐈',
+  'Iss saal tumhara phuljhadi wala selfie viral hoga… sirf family group mein 🤳',
+  'Tum chakri chalaoge aur wo tumhare pair ke peeche hi ghoomegi. Shayad ex ki tarah 🌀',
+  'Bonus aayega! Nahi, sorry, galat bhavishya padh liya. Wo HR ka tha 🙃',
+  'Tum sabse zyada mithai khaoge aur photo mein sabse zyada "main toh diet pe hoon" bologe 🍬',
+];
+const baba=['Baba ne tea-leaf padhi… 🍵','Baba ki aankhen laal ho gayi (dhuein se)… 👀','Baba ne laddoo mein dekha… 🟠','Sitaare keh rahe hain… ✨'];
+$('#predictBtn').onclick=()=>{
+  const n=clean($('#nameIn').value)||'Anjaan Dost';
+  const s=$('#scroll');s.classList.remove('pop');void s.offsetWidth;
+  s.innerHTML='<span>🔮 Baba soch rahe hain…</span>';
+  setTimeout(()=>{
+    s.innerHTML=`<div class="who">${n} ke liye</div><small>${pick(baba)}</small><div>${pick(preds)}</div>`;
+    s.classList.add('pop');const r=s.getBoundingClientRect();burst(r.left+r.width/2,r.top+30,40);
+  },900);
+};
+$('#nameIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('#predictBtn').click()});
+
+/* ---------- safai game ---------- */
+const junkItems=['🕸️','💨','🧾','🥔','🧦','📦','🍕','🕷️'];
+const game=$('#game');let score=0,tleft=20,timer=null,spawner=null,running=false;
+function spawn(){
+  if(!running)return;
+  const j=document.createElement('div');j.className='junk';
+  const isMoney=Math.random()<.13;j.textContent=isMoney?'💸':pick(junkItems);
+  j.style.left=(Math.random()*(game.clientWidth-60)+10)+'px';
+  j.style.top=(Math.random()*(game.clientHeight-130)+40)+'px';
+  j.onclick=e=>{e.stopPropagation();if(j.classList.contains('gone'))return;j.classList.add('gone');
+    if(isMoney){score=Math.max(0,score-3);toast('Abe! ₹500 phenk diya?! −3 😱')}else score++;
+    $('#score').textContent=score;setTimeout(()=>j.remove(),300)};
+  game.appendChild(j);setTimeout(()=>{if(!j.classList.contains('gone'))j.remove()},2200);
+}
+function endGame(){
+  running=false;clearInterval(timer);clearInterval(spawner);
+  game.querySelectorAll('.junk').forEach(j=>j.remove());
+  $('#mummy').classList.add('show');
+  let title,line;
+  if(score>=25){title='Safai Samrat 👑';line='Mummy ne khush hoke extra gulab jamun diya! 🍯'}
+  else if(score>=15){title='Theek-thaak Beta 🙂';line='"Thoda aur kar leta toh kya jaata?" — Mummy'}
+  else if(score>=6){title='Aalsi Raja 🦥';line='Mummy ne chappal uthayi… bhaago! 🩴💨'}
+  else{title='Gaya Tu 💀';line='Ab Bhai Dooj tak tumhara phone confiscated hai 📵'}
+  setTimeout(()=>{
+    const o=$('#overlay');o.style.display='flex';
+    o.innerHTML=`<div class="big">${title}</div><p>Tumne <b>${score}</b> cheezein saaf ki.<br>${line}</p>
+      <button class="btn" id="startBtn">Phir se khelo 🔁</button>`;
+    $('#startBtn').onclick=startGame;
+  },700);
+}
+function startGame(){
+  score=0;tleft=20;$('#score').textContent=0;$('#time').textContent=20;
+  $('#overlay').style.display='none';$('#mummy').classList.remove('show');running=true;
+  spawner=setInterval(spawn,520);spawn();spawn();
+  timer=setInterval(()=>{tleft--;$('#time').textContent=tleft;
+    if(tleft===5)toast('Mummy ki chappal ki aawaz aa rahi hai! 👣');if(tleft<=0)endGame()},1000);
+}
+$('#startBtn').onclick=startGame;
+
+/* ---------- friend types ---------- */
+const types=[
+  ['🍬','Mithai Inspector','Har ghar jaake bolta hai "bas ek piece", aur poora dabba khatam. Diet Monday se shuru hoti hai, kaunsa Monday — pata nahi.'],
+  ['🃏','Taash ka Tycoon','Saal bhar "main gambling nahi karta", Diwali ki raat poker face aur khaali jeb ke saath ghar jaata hai.'],
+  ['📸','Insta Rangoli Artist','Rangoli 10 minute ki, uski photo ka editing 2 ghante. Caption: "Festive vibes ✨🪔 #blessed"'],
+  ['🙉','Darpok Dost','Ladi jalane jaata hai, 4 feet door se agarbatti lagata hai, aur phatne se pehle hi 100m bhaag jaata hai.'],
+  ['🚀','Rocket Scientist','Bottle mein rocket set karne mein ISRO se zyada calculation. Phir bhi rocket seedha padosi ki taraf.'],
+  ['📱','Forward King','Raat 12:01 pe "Advance Happy Diwali" se lekar Bhai Dooj tak GIF bhejta hai. Mute karna hi padta hai.'],
+  ['🧹','Safai Se Bhaagne Wala','Diwali se ek hafte pehle hi "important kaam" se bahar chala jaata hai. Laut ta hai jab ghar chamak raha ho.'],
+  ['😴','Sone Wala','Sabse loud patake ke beech bhi so jaata hai. Subah poochta hai "kal raat kuch hua tha kya?"'],
+];
+const grid=$('#grid');
+types.forEach(([e,t,d])=>{
+  const c=document.createElement('div');c.className='ftype';
+  c.innerHTML=`<div class="inner"><div class="face front"><div class="emo">${e}</div><b>${t}</b><small>tap karo 👆</small></div>
+    <div class="face back">${d}</div></div>`;
+  c.onclick=()=>c.classList.toggle('flip');grid.appendChild(c);
+});
+
+/* ---------- meter ---------- */
+const verdicts=[
+  [20,'Phuljhadi Level 🎇 — itne shareef ho ki patake bhi tumse sorry bolte hain'],
+  [45,'Anaar Level 🌋 — kabhi kabhi chamakte ho, kabhi bas dhuaan'],
+  [70,'Chakri Level 🌀 — ghoom ghoom ke sabka sir dukhate ho'],
+  [90,'Rocket Level 🚀 — kahan jaoge kisi ko nahi pata, tumhe bhi nahi'],
+  [101,'SUTLI BOMB LEVEL 💣 — mohalle ke saare kutte tumse darte hain'],
+];
+$('#meterBtn').onclick=()=>{
+  const n=clean($('#meterIn').value);
+  if(!n){$('#verdict').textContent='Naam toh daalo, sharmao mat 🙈';return}
+  const v=hash(n+'diwali')%101;
+  $('#bar').style.width='0';$('#verdict').textContent='Naap rahe hain… 📏';
+  setTimeout(()=>{$('#bar').style.width=v+'%';},50);
+  setTimeout(()=>{const txt=verdicts.find(x=>v<x[0])[1];$('#verdict').textContent=`${n}: ${v}% — ${txt}`;
+    if(v>=90)$('#bomb').click();},1300);
+};
+$('#meterIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('#meterBtn').click()});
+
+/* ---------- wishes ---------- */
+const wishes=[
+  n=>`Dear ${n},\nIss Diwali tumhari zindagi mein itni roshni aaye ki sunglasses pehenne pade 😎\nAur itni mithai aaye ki dentist bhi party kare 🦷\nHappy Diwali! 🪔`,
+  n=>`${n}, tum mere dost nahi, mere favourite patake ho 💥\nKab phatoge, kisi ko nahi pata, par jab phat te ho, maza aa jaata hai!\nShubh Deepavali 🎆`,
+  n=>`Oye ${n}!\nLakshmi ji tumhare ghar aayein, Saraswati ji dimaag mein,\naur tumhari mithai mere ghar 😋\nHappy Diwali bhai! 🪔`,
+  n=>`${n}, iss Diwali do cheezein jalaana:\n1. Diye 🪔\n2. Apne ex ki purani photos 🔥\nBaaki sab mithai ke saath adjust ho jayega. Happy Diwali!`,
+  n=>`Breaking News 📰\n${n} ne iss saal soan papdi ka dabba khola aur KHAYA bhi!\nScientists hairaan hain 🔬\nHappy Diwali, legend! ✨`,
+  n=>`Dear ${n},\nTumhari zindagi chakri jaisi ghoomti rahe,\nrocket jaisi upar jaaye,\naur bomb jaisi dhamakedaar ho 💣\n(Bas padosi ki khidki se door) 😅\nHappy Diwali!`,
+  n=>`${n}, Diwali ka asli patakha tum ho 🎇\nKyunki tumhare jokes sunke sabke kaan bajne lagte hain 🙉\nLove you yaar, Happy Diwali! 🪔`,
+];
+let lastWish=-1;
+$('#wishBtn').onclick=()=>{
+  const n=clean($('#wishIn').value)||'Dost';let i;do{i=Math.floor(Math.random()*wishes.length)}while(i===lastWish);lastWish=i;
+  $('#wishOut').textContent=wishes[i](n);const r=$('#wishOut').getBoundingClientRect();burst(r.left+r.width/2,r.top+20,40);
+};
+$('#wishIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('#wishBtn').click()});
+$('#copyBtn').onclick=async()=>{
+  const t=$('#wishOut').textContent;
+  try{await navigator.clipboard.writeText(t);toast('Copy ho gaya! Ab bhej do 🚀')}
+  catch(e){const r=document.createRange();r.selectNodeContents($('#wishOut'));const s=getSelection();s.removeAllRanges();s.addRange(r);
+    toast('Text select ho gaya — ab copy kar lo 📋')}
+};
+
+// welcome burst
+setTimeout(()=>{for(let k=0;k<4;k++)setTimeout(()=>burst(innerWidth*(.2+.2*k),innerHeight*.3,60),k*250)},400);
+</script>
+</body>
+</html>
